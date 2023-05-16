@@ -1,0 +1,39 @@
+{% extends 'Site_app/base_style/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    Sign up
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'Site_app/css/common/register.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h2 class="form-title">Sign up</h2>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+            </div>
+            <div class="form-group">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}
